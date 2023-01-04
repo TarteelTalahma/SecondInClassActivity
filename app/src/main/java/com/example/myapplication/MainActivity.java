@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     String title;
     String author;
     String pages;
+    public static final String SWITCH1 = "switch1";
+    private boolean switchOnOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         switch1 = findViewById(R.id.switch1);
         applyTextButton = findViewById(R.id.apply_text_button);
         saveButton = findViewById(R.id.save_button);
-        Book [] books = new Book[10];
-        books[0] = new Book("java", "marthen","555");
         title = edtTitle.getText().toString();
         author = edtAuthor.getText().toString();
         pages = edtPages.getText().toString();
@@ -50,28 +50,32 @@ public class MainActivity extends AppCompatActivity {
         applyTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Book.addBook.add(new Book(title, author, pages));
-          //      Toast toast = Toast.makeText(this,"BOOK SAVED", LENGTH_LONG).show();
-                //
+                addBook();
                 }
         });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-                SharedPreferences.Editor editor = prefs.edit();
-                Gson gson = new Gson();
-                String booksString = gson.toJson(books);
-                editor.putString("books", booksString);
-                editor.commit();
-                //Toast toast = Toast.makeText(this,"Data Saved", LENGTH_LONG).show();
+                saveData();
             }
         });
+        }
 
+        public void saveData(){
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = prefs.edit();
+            Gson gson = new Gson();
+            String booksString = gson.toJson(Book.getAddBook());
+            editor.putString("books", booksString);
+            editor.putBoolean(SWITCH1, switch1.isChecked());
+            editor.commit();
+            Toast.makeText(this,"DATA SAVED", LENGTH_LONG).show();
+    }
 
-
+    public void addBook(){
+        Book.addBook.add(new Book(title, author, pages));
+        Toast.makeText(this,"BOOK ADDED", LENGTH_LONG).show();
     }
 
 }

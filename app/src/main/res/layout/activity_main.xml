@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <TextView
-        android:id="@+id/textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:text="Enter New Book"
         android:textSize="30sp"
-        tools:text="Enter New Books" />
+        android:layout_gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/edtTitle"
@@ -33,24 +33,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <EditText
-        android:id="@+id/edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:text="available?"/>
 
     <Button
         android:id="@+id/apply_text_button"
-        android:layout_width="wrap_content"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Add" />
-
 
 
     <Button
@@ -58,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="SAVE DATA"/>
+        android:text="SAVE DATA" />
 
 
 </LinearLayout>

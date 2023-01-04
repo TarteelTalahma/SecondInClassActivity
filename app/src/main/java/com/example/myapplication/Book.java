@@ -46,4 +46,8 @@ public class Book {
                 ", author='" + author + '\'' +
                 '}';
     }
+
+    public static ArrayList getAddBook() {
+        return addBook;
+    }
 }
